@@ -3,7 +3,7 @@
 // ####### Plugin:      jScroll                                                 #######
 // ####### Author:      William Duffy                                           #######
 // ####### Website:     http://www.wduffy.co.uk/jScroll                         #######
-// ####### Version:     1	                                                    #######
+// ####### Version:     1.0	                                                    #######
 // #######                                                                      #######
 // ####### Copyright (c) 2011, William Duffy - www.wduffy.co.uk                 #######
 // #######                                                                      #######
@@ -31,7 +31,7 @@
 // ####################################################################################
 (function($) {
     
-    // Public: jLabel Plugin
+    // Public: jScroll Plugin
     $.fn.jScroll = function(options) {
 
         var opts = $.extend({}, $.fn.jScroll.defaults, options);
@@ -39,20 +39,39 @@
         return this.each(function() {
 			var $element = $(this);
 			var $window = $(window);
-			var top = 30; //$element.offset().top; returning 38 instead of 30????
 			
-			$window.scroll(function() {			
+			var originalTop = $element.offset().top;
+			var originalMargin = parseInt($element.css("margin-top"));
+			
+			alert($element.parent().innerHeight());
+			
+			$window.scroll(function() {
 				$element
 					.stop()
-					.animate({"marginTop": ($window.scrollTop() + top) + "px"}, opts.speed);
+					.animate(getAnimation($window.scrollTop(), originalTop, originalMargin), opts.speed);
 			});
         });
-
+		
+		function getAnimation(currentScroll, originalTop, originalMargin)
+		{ 
+			var marginTop = originalMargin;
+			
+			if (currentScroll >= originalTop)
+				marginTop = marginTop + opts.margin + (currentScroll - originalTop); 
+			
+			// TODO:
+			// Don't allow element to extend height of its own container.
+		
+			return ({"marginTop" : marginTop + 'px'});
+		}
+		
+		
     };
 
     // Public: Default values
     $.fn.jScroll.defaults = {
-        speed 	:	"slow"
+        speed 		:	"slow",
+		margin		:	10
     };
 
 })(jQuery);

@@ -7,12 +7,13 @@
 	<script>
 		$().ready(function() {
 			
-			$("#scrollingDiv").jScroll();
+			$("#scrollingDiv").jScroll({margin:50});
 			
 		});
 	</script>
 </head><body>
 
+<div style="background-color: green; margin: 200px;">
 
 <div style="float: left; width: 70%;">
 	<h1>Keep element in view while scrolling using JQuery</h1>
@@ -276,12 +277,15 @@ dignissim tortor. Suspendisse dictum ornare velit, at viverra mi
 condimentum a.</p>
 </div>
 
-<div id="scrollingDiv" style="float: left; width: 21%; padding: 0% 2% 2%; margin-left: 4%; margin-top: 30px; border: 2px solid red; background-color: rgb(255, 234, 234);">
+<div id="scrollingDiv" style="float: left; width: 21%; padding: 0% 2% 2%; margin-left: 4%; margin-top: 120px; border: 2px solid red; background-color: rgb(255, 234, 234);">
 	<h2>Scrolling Element</h2>
 	Scroll down/up to see me smoothly reposition myself and keep in view.<br><br>
 	
 	<em>Smooooooooooooooooooth</em><br>
 	<a href="http://www.wduffy.co.uk/blog/keep-element-in-view-while-scrolling-using-jquery/" style="color: red;">Show me how it's done!</a>
+</div>
+
+<div style="clear: both"><!-- clear --></div>
 </div>
 
 </body></html>
