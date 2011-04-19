@@ -39,32 +39,35 @@
         return this.each(function() {
 			var $element = $(this);
 			var $window = $(window);
-			
-			var originalTop = $element.offset().top;
-			var originalMargin = parseInt($element.css("margin-top"));
-			
-			alert($element.parent().innerHeight());
+			var locator = new location($element);
 			
 			$window.scroll(function() {
 				$element
 					.stop()
-					.animate(getAnimation($window.scrollTop(), originalTop, originalMargin), opts.speed);
+					.animate(locator.getMargin($window), opts.speed);
 			});
         });
 		
-		function getAnimation(currentScroll, originalTop, originalMargin)
-		{ 
-			var marginTop = originalMargin;
+		// Private 
+		function location($element)
+		{
+			this.min = $element.offset().top;
+			this.max = $element.parent().height() - $element.innerHeight() - opts.margin;
+			this.originalMargin = parseInt($element.css("margin-top"));
 			
-			if (currentScroll >= originalTop)
-				marginTop = marginTop + opts.margin + (currentScroll - originalTop); 
+			this.getMargin = function ($window)
+			{
+				var margin = this.originalMargin;
 			
-			// TODO:
-			// Don't allow element to extend height of its own container.
-		
-			return ({"marginTop" : marginTop + 'px'});
-		}
-		
+				if ($window.scrollTop() >= this.min)
+					margin = margin + opts.margin + $window.scrollTop() - this.min; 
+				
+				if (margin > this.max)
+					margin = this.max;
+			
+				return ({"marginTop" : margin + 'px'});
+			}
+		}	   
 		
     };
 
