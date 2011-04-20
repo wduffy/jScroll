@@ -52,7 +52,7 @@
 		function location($element)
 		{
 			this.min = $element.offset().top;
-			this.max = $element.parent().height() - $element.innerHeight() - opts.margin;
+			this.max = $element.parent().height() - $element.outerHeight();
 			this.originalMargin = parseInt($element.css("margin-top"));
 			
 			this.getMargin = function ($window)
@@ -60,7 +60,7 @@
 				var margin = this.originalMargin;
 			
 				if ($window.scrollTop() >= this.min)
-					margin = margin + opts.margin + $window.scrollTop() - this.min; 
+					margin = margin + opts.top + $window.scrollTop() - this.min; 
 				
 				if (margin > this.max)
 					margin = this.max;
@@ -73,8 +73,8 @@
 
     // Public: Default values
     $.fn.jScroll.defaults = {
-        speed 		:	"slow",
-		margin		:	10
+        speed	:	"slow",
+		top		:	10
     };
 
 })(jQuery);
