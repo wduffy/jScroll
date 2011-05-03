@@ -53,7 +53,7 @@
 		{
 			this.min = $element.offset().top;
 			this.max = $element.parent().height() - $element.outerHeight();
-			this.originalMargin = parseInt($element.css("margin-top"));
+			this.originalMargin = parseInt($element.css("margin-top"), 10) || 0;
 			
 			this.getMargin = function ($window)
 			{
