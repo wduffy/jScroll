@@ -3,7 +3,7 @@
 // ####### Plugin:      jScroll                                                 #######
 // ####### Author:      William Duffy                                           #######
 // ####### Website:     http://www.wduffy.co.uk/jScroll                         #######
-// ####### Version:     1.0	                                                    #######
+// ####### Version:     1.1	                                                    #######
 // #######                                                                      #######
 // ####### Copyright (c) 2011, William Duffy - www.wduffy.co.uk                 #######
 // #######                                                                      #######
@@ -56,7 +56,6 @@
 			
 			this.getMargin = function ($window)
 			{
-
 				var max = $element.parent().height() - $element.outerHeight();
 				var margin = this.originalMargin;
 			
