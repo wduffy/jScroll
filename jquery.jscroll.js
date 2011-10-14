@@ -40,11 +40,23 @@
             var $element = $(this);
             var $window = $(window);
             var locator = new location($element);
+            var didScroll = false;
+            var timer = false;
 
-            $window.scroll(function() {
-                $element
-                    .stop()
-                    .animate(locator.getMargin($window), opts.speed);
+            // http://ejohn.org/blog/learning-from-twitter/
+            $(window).scroll(function() {
+                if(!didScroll) {
+                    timer = setInterval(function() {
+                        if ( didScroll ) {
+                            didScroll = false;
+                            clearTimeout(timer);
+                            $element
+                            .stop()
+                            .animate(locator.getMargin($window), opts.speed);
+                        }
+                    }, 250);
+                }
+                didScroll = true;
             });
         });
 
