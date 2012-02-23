@@ -56,7 +56,7 @@
 			
 			this.getMargin = function ($window)
 			{
-				var max = $element.parent().height() - $element.outerHeight();
+				var max = opts.max ? opts.max() : $element.parent().height() - $element.outerHeight();
 				var margin = this.originalMargin;
 			
 				if ($window.scrollTop() >= this.min)
@@ -74,7 +74,8 @@
     // Public: Default values
     $.fn.jScroll.defaults = {
         speed	:	"slow",
-		top		:	10
+		top		:	10,
+		max : null
     };
 
 })(jQuery);
