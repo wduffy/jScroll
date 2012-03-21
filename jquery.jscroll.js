@@ -78,7 +78,7 @@
                     margin = max;
 
                 return ({"marginTop" : margin + 'px'});
-            }
+            };
         }
 
     };
