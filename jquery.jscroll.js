@@ -59,7 +59,7 @@
 				var max = $element.parent().height() - $element.outerHeight();
 				var margin = this.originalMargin;
 			
-				if ($window.scrollTop() >= this.min)
+				if ($window.scrollTop() >= this.min - opts.top)
 					margin = margin + opts.top + $window.scrollTop() - this.min; 
 				
 				if (margin > max)
