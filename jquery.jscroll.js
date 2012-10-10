@@ -53,14 +53,16 @@
 		{
 			this.min = $element.offset().top;
 			this.originalMargin = parseInt($element.css("margin-top"), 10) || 0;
+			this.originalDocumentHeight = $(document).height();
 			
 			this.getMargin = function ($window)
 			{
 				var max = $element.parent().height() - $element.outerHeight();
 				var margin = this.originalMargin;
+				var delta = (($(document).height() - this.originalDocumentHeight) || 0);
 			
-				if ($window.scrollTop() >= this.min)
-					margin = margin + opts.top + $window.scrollTop() - this.min; 
+				if ($window.scrollTop() >= (this.min + delta))
+					margin = margin + opts.top + $window.scrollTop() - this.min - delta; 
 				
 				if (margin > max)
 					margin = max;
