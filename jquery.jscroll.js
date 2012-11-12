@@ -3,7 +3,7 @@
 // ####### Plugin:      jScroll                                                 #######
 // ####### Author:      William Duffy                                           #######
 // ####### Website:     http://www.wduffy.co.uk/jScroll                         #######
-// ####### Version:     1.1	                                                    #######
+// ####### Version:     1.1                                                     #######
 // #######                                                                      #######
 // ####### Copyright (c) 2011, William Duffy - www.wduffy.co.uk                 #######
 // #######                                                                      #######
@@ -56,7 +56,7 @@
 			
 			this.getMargin = function ($window)
 			{
-				var max = $element.parent().height() - $element.outerHeight();
+				var max = opts.getParentHeight() - $element.outerHeight();
 				var margin = this.originalMargin;
 			
 				if ($window.scrollTop() >= this.min)
@@ -73,8 +73,9 @@
 
     // Public: Default values
     $.fn.jScroll.defaults = {
-        speed	:	"slow",
-		top		:	10
+        speed: "slow",
+	top: 10,
+	getParentHeight: function () { $(this).parent().height(); }
     };
 
 })(jQuery);
