@@ -3,7 +3,7 @@
 // ####### Plugin:      jScroll                                                 #######
 // ####### Author:      William Duffy                                           #######
 // ####### Website:     http://www.wduffy.co.uk/jScroll                         #######
-// ####### Version:     1.1	                                                    #######
+// ####### Version:     1.1	                                                #######
 // #######                                                                      #######
 // ####### Copyright (c) 2011, William Duffy - www.wduffy.co.uk                 #######
 // #######                                                                      #######
